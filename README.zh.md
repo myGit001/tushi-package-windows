@@ -16,8 +16,9 @@
 
 <div align="center">
 
-<video src="https://github.com/user-attachments/assets/cb7f3ee0-993f-4b0f-9994-00e3dd84a072" controls width="100%"></video>
-[<img src="https://gitee.com/zttbb/tushi-package-windows/raw/master/ExePack/tushi-promo-loop.gif" width="820">](https://cdn.jsdelivr.net/gh/myGit001/tushi-package-windows@main/ExePack/tushi-promo.mp4)
+<video src="https://github.com/user-attachments/assets/cb7f3ee0-993f-4b0f-9994-00e3dd84a072" controls width="100%">
+  <a href="https://cdn.jsdelivr.net/gh/myGit001/tushi-package-windows@main/ExePack/tushi-promo.mp4"><img src="https://gitee.com/zttbb/tushi-package-windows/raw/master/ExePack/tushi-promo-loop.gif" width="820"></a>
+</video>
 
 </div>
 
