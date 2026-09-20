@@ -6,7 +6,7 @@
 
 [简体中文](README.zh.md) · English
 
-![Windows](https://img.shields.io/badge/Platform-Windows-0078D6) ![Language](https://img.shields.io/badge/Language-C%23%2FUnity-512BD4) ![Pipelines](https://img.shields.io/badge/Pipeline-AI%20Video-informational) ![License](https://img.shields.io/badge/License-Proprietary-lightgrey)
+![Windows](https://img.shields.io/badge/Platform-Windows-0078D6) ![Pipelines](https://img.shields.io/badge/Pipeline-AI%20Video-informational) ![License](https://img.shields.io/badge/License-Proprietary-lightgrey)
 
 *One workflow, hundreds of shots. You decide the workflow — Tushi batches it.*
 
@@ -21,6 +21,24 @@
 [<img src="https://gitee.com/zttbb/tushi-package-windows/raw/master/ExePack/tushi-promo-loop.gif" width="820">](https://cdn.jsdelivr.net/gh/myGit001/tushi-package-windows@main/ExePack/tushi-promo.mp4)
 
 </div>
+
+---
+
+## Table of Contents
+
+- [Quick Start](#quick-start)
+- [Requirements](#requirements)
+- [Installation & Launch](#installation--launch)
+- [Forward Generation](#forward-generation)
+- [Reverse Engineering](#reverse-engineering)
+- [Workflow Configuration](#workflow-configuration)
+- [AI Inference & Voice-Over](#ai-inference--voice-over)
+- [Project Interface](#project-interface)
+- [Export](#export)
+- [Command Line (CLI)](#command-line-cli)
+- [AI Agent Skills](#ai-agent-skills)
+- [FAQ](#faq)
+- [Resources](#resources)
 
 ---
 
@@ -43,23 +61,6 @@
 2. Pick an **execution backend** — local ComfyUI / RunningHub / RunningHub Model API / Zhenzhen AI ([cloud options with free credits](#requirements)).
 3. Open **Settings**: set your **asset save path**, optional **JianYing draft path**, and the **inference / voice-over workflows**.
 4. Create a **project** → paste text (forward) or import a video (reverse) → generate.
-
-## Table of Contents
-
-- [Requirements](#requirements)
-- [Installation & Launch](#installation--launch)
-- [Forward Generation](#forward-generation)
-- [Reverse Engineering](#reverse-engineering)
-- [Workflow Configuration](#workflow-configuration)
-- [AI Inference & Voice-Over](#ai-inference--voice-over)
-- [Project Interface](#project-interface)
-- [Export](#export)
-- [Command Line (CLI)](#command-line-cli)
-- [AI Agent Skills](#ai-agent-skills)
-- [FAQ](#faq)
-- [Resources](#resources)
-
----
 
 ## Requirements
 

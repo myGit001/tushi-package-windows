@@ -6,7 +6,7 @@
 
 [English](README.md) · 简体中文
 
-![Windows](https://img.shields.io/badge/平台-Windows-0078D6) ![语言](https://img.shields.io/badge/语言-C%23%2FUnity-512BD4) ![流水线](https://img.shields.io/badge/流水线-AI%20视频-informational) ![授权](https://img.shields.io/badge/授权-专有-lightgrey)
+![Windows](https://img.shields.io/badge/平台-Windows-0078D6) ![流水线](https://img.shields.io/badge/流水线-AI%20视频-informational) ![授权](https://img.shields.io/badge/授权-专有-lightgrey)
 
 *一条工作流，批量打几十上百个分镜。工作流你来定，批量跑交给途视。*
 
@@ -21,6 +21,24 @@
 [<img src="https://gitee.com/zttbb/tushi-package-windows/raw/master/ExePack/tushi-promo-loop.gif" width="820">](https://cdn.jsdelivr.net/gh/myGit001/tushi-package-windows@main/ExePack/tushi-promo.mp4)
 
 </div>
+
+---
+
+## 目录
+
+- [快速上手](#快速上手)
+- [环境准备](#环境准备)
+- [安装与启动](#安装与启动)
+- [正推流程](#正推流程)
+- [反推流程](#反推流程)
+- [工作流配置](#工作流配置)
+- [AI 推理与配音](#ai-推理与配音)
+- [项目界面](#项目界面)
+- [导出](#导出)
+- [命令行 CLI](#命令行-cli)
+- [AI Agent Skills](#ai-agent-skills)
+- [常见问题](#常见问题)
+- [相关资源](#相关资源)
 
 ---
 
@@ -43,23 +61,6 @@
 2. 选一个**执行后端** —— 本地 ComfyUI / RunningHub / RunningHub 模型 API / 贞贞 AI（也有[带免费额度的云端平台](#环境准备)）。
 3. 进入**设置**：配置**项目资源保存路径**、可选的**剪映草稿路径**，以及**推理 / 配音工作流**。
 4. 新建**项目** → 粘贴文本（正推）或导入视频（反推）→ 开始生成。
-
-## 目录
-
-- [环境准备](#环境准备)
-- [安装与启动](#安装与启动)
-- [正推流程](#正推流程)
-- [反推流程](#反推流程)
-- [工作流配置](#工作流配置)
-- [AI 推理与配音](#ai-推理与配音)
-- [项目界面](#项目界面)
-- [导出](#导出)
-- [命令行 CLI](#命令行-cli)
-- [AI Agent Skills](#ai-agent-skills)
-- [常见问题](#常见问题)
-- [相关资源](#相关资源)
-
----
 
 ## 环境准备
 
