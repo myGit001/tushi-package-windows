@@ -16,9 +16,7 @@
 
 ---
 
-<video src="https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/tushi-promo.mp4" controls preload="metadata" poster="https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/poster-batch.png"></video>
-
-[![](https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/poster-batch.png)](https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/tushi-promo.mp4)
+<video src="https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/tushi-promo.mp4" controls preload="metadata"></video>
 
 ## Overview
 

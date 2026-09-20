@@ -12,9 +12,7 @@ English ([README.md](README.md)) | 简体中文
 
 ---
 
-<video src="https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/tushi-promo.mp4" controls preload="metadata" poster="https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/poster-batch.png"></video>
-
-[![](https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/poster-batch.png)](https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/tushi-promo.mp4)
+<video src="https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/tushi-promo.mp4" controls preload="metadata"></video>
 
 ## 软件介绍
 
