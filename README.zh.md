@@ -12,6 +12,12 @@ English ([README.md](README.md)) | 简体中文
 
 ---
 
+<video src="https://github.com/myGit001/tushi-package-windows/raw/main/%E4%BD%9C%E5%93%81/%E5%AE%A3%E4%BC%A0%E7%89%87-%E9%80%94%E8%A7%86promo-v2/out/tushi-promo-v2.mp4" controls preload="metadata" poster="作品/宣传片-途视promo-v2/out/poster-batch.png"></video>
+
+[![途视宣传片](作品/宣传片-途视promo-v2/out/poster-batch.png)](作品/宣传片-途视promo-v2/out/tushi-promo-v2.mp4)
+
+---
+
 ## 软件介绍
 
 途视的核心本质是 **批量跑工作流**：把你要处理的内容组织成"项目 + 分镜"的结构，然后一键让整批分镜依次通过你配置好的工作流（本地 ComfyUI / RunningHub 等），自动喂入数据、自动取回结果、自动整理归档。
