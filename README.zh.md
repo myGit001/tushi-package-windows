@@ -12,7 +12,7 @@ English ([README.md](README.md)) | 简体中文
 
 ---
 
-<video src="https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/tushi-promo.mp4" controls preload="metadata"></video>
+<video src="https://github.com/user-attachments/assets/cb7f3ee0-993f-4b0f-9994-00e3dd84a072" controls width="100%"></video>
 
 ## 软件介绍
 
