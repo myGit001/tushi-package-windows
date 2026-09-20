@@ -12,11 +12,9 @@ English ([README.md](README.md)) | 简体中文
 
 ---
 
-<video src="https://github.com/myGit001/tushi-package-windows/raw/main/%E4%BD%9C%E5%93%81/%E5%AE%A3%E4%BC%A0%E7%89%87-%E9%80%94%E8%A7%86promo-v2/out/tushi-promo-v2.mp4" controls preload="metadata" poster="作品/宣传片-途视promo-v2/out/poster-batch.png"></video>
+<video src="https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/tushi-promo.mp4" controls preload="metadata" poster="https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/poster-batch.png"></video>
 
-[![途视宣传片](作品/宣传片-途视promo-v2/out/poster-batch.png)](作品/宣传片-途视promo-v2/out/tushi-promo-v2.mp4)
-
----
+[![](https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/poster-batch.png)](https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/tushi-promo.mp4)
 
 ## 软件介绍
 

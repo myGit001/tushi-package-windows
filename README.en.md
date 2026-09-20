@@ -16,6 +16,10 @@
 
 ---
 
+<video src="https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/tushi-promo.mp4" controls preload="metadata" poster="https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/poster-batch.png"></video>
+
+[![](https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/poster-batch.png)](https://github.com/myGit001/tushi-package-windows/raw/main/ExePack/tushi-promo.mp4)
+
 ## Overview
 
 At its core, Tushi is about **running workflows in batches**: you organize your content into a **project + shots** structure, then send the whole batch of shots through your configured workflows (local ComfyUI / RunningHub / etc.) with one click. Data goes in automatically, results come back automatically, everything gets filed automatically.
