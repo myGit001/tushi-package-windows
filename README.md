@@ -1,538 +1,309 @@
-# Tushi — AI Batch Video Generation Tool
+<div align="center">
 
-[简体中文](README.zh.md) | English
+# 🎬 Tushi · 途视
 
-**AI video creation for Windows.** Turn novels, scripts or plain text into short dramas, motion comics and AI videos — in batch.
+**AI Batch Video Generation for Windows** — Turn novels, scripts, and plain text into short dramas, motion comics & AI videos — in batch.
 
-- **Built for:** short drama / micro drama / vertical drama, motion comic, AI comic, novel-to-video, AI storytelling, AI commentary video, video style remixing, AI filmmaking, AI content creation
-- **Powered by:** ComfyUI, RunningHub, Stable Diffusion, Kling, Jimeng, Vidu, MiniMax (Hailuo), Doubao, Sora
-- **Pipeline:** text-to-image, image-to-video, text-to-video, lip-sync, TTS voice-over, upscaling, 3D model generation, JianYing (CapCut CN) draft export
+[简体中文](README.zh.md) · English
 
-<p align="center">
-  <b>Multiply your output. A batch-generation workhorse for motion comics, short dramas, and reverse-prompting workflows.</b>
-</p>
+![Windows](https://img.shields.io/badge/Platform-Windows-0078D6) ![Language](https://img.shields.io/badge/Language-C%23%2FUnity-512BD4) ![Pipelines](https://img.shields.io/badge/Pipeline-AI%20Video-informational) ![License](https://img.shields.io/badge/License-Proprietary-lightgrey)
 
-> **Tushi** is an **AI workflow batch-execution tool**. It organizes a project's assets (text, images, video, audio, characters, 3D models, and more) into a unified data model, then **batch-dispatches** any workflow — local ComfyUI, RunningHub, or other platforms — to run against them, and automatically collects and files the results back into the project. Text-to-image, image-to-video, LLM inference, voice-over, 3D generation — if it's a ComfyUI-compatible workflow, Tushi can run it in bulk, project by project.
+*One workflow, hundreds of shots. You decide the workflow — Tushi batches it.*
 
----
+[**⬇ 下载 Download**](#requirements) · [**🚀 快速开始 Quick Start**](#quick-start) · [**📖 文档 Docs**](#table-of-contents) · [**📺 B站教程**](https://space.bilibili.com/199774118)
+
+</div>
+
+<div align="center">
 
 <video src="https://github.com/user-attachments/assets/cb7f3ee0-993f-4b0f-9994-00e3dd84a072" controls width="100%"></video>
+
 [<img src="https://gitee.com/zttbb/tushi-package-windows/raw/master/ExePack/tushi-promo-loop.gif" width="820">](https://cdn.jsdelivr.net/gh/myGit001/tushi-package-windows@main/ExePack/tushi-promo.mp4)
 
-## Overview
-
-At its core, Tushi is about **running workflows in batches**: you organize your content into a **project + shots** structure, then send the whole batch of shots through your configured workflows (local ComfyUI / RunningHub / etc.) with one click. Data goes in automatically, results come back automatically, everything gets filed automatically.
-
-What that buys you:
-
-- **Batch** — one workflow can hit dozens or hundreds of shots at once; no more running them one by one
-- **Pipeline** — text → prompts → images → video → voice-over → post; every stage is a workflow, and they chain into a single run
-- **Flexible** — workflows are entirely yours to define (anything ComfyUI-compatible). Tushi only handles dispatch, parameter passing, and result collection
-- **Multi-platform** — the same pipeline can switch between local ComfyUI, RunningHub, or other cloud channels
-
-Typical uses (what a workflow actually does is up to your configuration):
-
-- Text workflows: rewriting, translation, LLM inference, shot/script/character generation
-- Image workflows: text-to-image, image-to-image, face swap, upscaling, prompt reverse-engineering
-- Video workflows: text-to-video, image-to-video, lip-sync, motion transfer, first/last frame
-- Audio workflows: TTS voice-over, music
-- 3D workflows: model generation
-
-### Use Cases
-
-| Use Case | What Tushi Does |
-|---------|-----------------|
-| **Motion comics / dynamic manga** | Feed in novel text → auto chapter & shot splitting → batch image generation → image-to-video → voice-over → export JianYing draft |
-| **Short dramas** | Script to shots, images, video, lip-sync, and upscaling — fully automated batch output |
-| **Commentary / news videos** | Copy → illustrations → voice-over → finished cut, produced in batches |
-| **Video remixing / style reference** | Import a reference video, auto-split shots, extract keyframes, reverse-engineer prompts, then batch-generate frames in the same style |
-| **Novel visualization** | Turn text into shot illustrations and build a video novel |
-
-> Tushi ships with two ways to organize work: **forward generation** (start from a piece of text and batch-produce content) and **reverse engineering** (start from a reference video, split scenes, extract keyframes, reverse-engineer prompts, then feed into batch generation). Both converge on the same core: **shots → batch-run workflows**.
+</div>
 
 ---
 
-## Highlights
+> **Tushi** is an **AI workflow batch-execution tool**. It organizes a project's assets (text, images, video, audio, characters, 3D models) into a unified data model, then **batch-dispatches** any workflow — local ComfyUI / RunningHub or other platforms — to run against them, and automatically collects & files the results back into the project. If it's a ComfyUI-compatible workflow, Tushi can run it in bulk, project by project.
 
-- **Batch workflow execution** — run an entire shot list through your workflow in sequence, with automatic input feeding and result collection
-- **Forward pipeline** — paste text, auto-split into shots, batch-generate images and video
-- **Reverse pipeline** — import a reference video for automatic scene splitting, keyframe extraction, and subtitle text recognition
-- **Semi-auto & full-auto modes** — fine-grained control or one-click batch generation
-- **Four execution channels** — local ComfyUI / RunningHub / RunningHub Model API / Zhenzhen AI, switchable at will
-- **Full pipeline coverage** — shots → images → video → voice-over → export, all in one place
-- **JianYing draft export** — generate JianYing projects with subtitles, animations, transitions, and effects, ready for further editing
-- **Local video toolbox** — speed change, reverse, trim, concat, frame extraction, subtitle extraction, background music, watermarking
+## ✨ Why Tushi
 
----
+| | | |
+|---|---|---|
+| 🚂 **Batch everything** | 🔗 **Full pipeline** | 🧩 **Bring your own workflow** |
+| One workflow hits dozens–hundreds of shots at once. Paste → auto-split → batch generate → export. | Text → prompt → image → video → voice-over → post. Every stage is a workflow; they chain into one click. | Workflows are 100% yours (anything ComfyUI-compatible). Tushi only handles dispatch, params & result collection. |
+| 🌐 **4 execution channels** | ⏩ **Forward & Reverse** | 🎬 **JianYing (CapCut CN) export** |
+| Local ComfyUI / RunningHub / RunningHub Model API / Zhenzhen AI — switch freely. | Forward: text in, video out. Reverse: import video → auto scene split → reverse-engineer prompts. | Drafts with subtitles, animation, transitions & effects, ready for cutting. |
+| 📦 **Local video toolbox** | 🧠 **AI inference** | 🔌 **CLI & AI-agent ready** |
+| Speed, reverse, trim, concat, frames, subtitles, BGM, watermark. | LLM rewriting, prompt, character & shot generation. | Scripts & AI agents drive the whole pipeline via a built-in CLI. |
+
+## Quick Start
+
+1. **Download** the bundle from [Xunlei Pan](https://pan.xunlei.com/s/VOZTX7ULtVWKUTvuBdUaY7BPA1?pwd=gjen) or [Quark Pan](https://pan.quark.cn/s/eb8e9af1a277?pwd=susf), extract, and double-click **运行途视.bat**.
+2. Pick an **execution backend** — local ComfyUI / RunningHub / RunningHub Model API / Zhenzhen AI ([cloud options with free credits](#requirements)).
+3. Open **Settings**: set your **asset save path**, optional **JianYing draft path**, and the **inference / voice-over workflows**.
+4. Create a **project** → paste text (forward) or import a video (reverse) → generate.
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Promo Video](#promo-video)
 - [Requirements](#requirements)
 - [Installation & Launch](#installation--launch)
-- [Getting Started](#getting-started)
-- [Forward Generation Workflow](#forward-generation-workflow)
-- [Reverse Engineering Workflow](#reverse-engineering-workflow)
+- [Forward Generation](#forward-generation)
+- [Reverse Engineering](#reverse-engineering)
 - [Workflow Configuration](#workflow-configuration)
-- [AI Inference](#ai-inference)
-- [Voice-Over](#voice-over)
+- [AI Inference & Voice-Over](#ai-inference--voice-over)
 - [Project Interface](#project-interface)
 - [Export](#export)
 - [Command Line (CLI)](#command-line-cli)
+- [AI Agent Skills](#ai-agent-skills)
 - [FAQ](#faq)
-- [Video Tutorials](#video-tutorials)
 - [Resources](#resources)
 
 ---
 
 ## Requirements
 
-### 1. Download
-
-Get the latest release from one of the mirrors:
-
-| Source | Link | Notes |
-|--------|------|-------|
-| Xunlei Pan | [Download](https://pan.xunlei.com/s/VOZTX7ULtVWKUTvuBdUaY7BPA1?pwd=gjen) | Full bundle |
-| Quark Pan | [Download](https://pan.quark.cn/s/eb8e9af1a277?pwd=susf) | Faster download |
-
-### 2. Workflow Execution Backend
-
-Tushi supports four execution channels — pick what you need (they can be mixed):
-
 | Backend | Description | What You Need |
 |---------|-------------|---------------|
-| **Local ComfyUI** | Your own local/server ComfyUI | ComfyUI environment installed, workflow working and exported in API format |
-| **RunningHub** | Cloud workflow / AI app marketplace | RunningHub account + API Key |
-| **RunningHub Model API** | RunningHub enterprise model endpoints | Model API Key |
+| **Local ComfyUI** | Your own local/server ComfyUI | ComfyUI installed, workflow exported in **API format** |
+| **RunningHub** | Cloud workflow / AI-app marketplace | RunningHub account + API Key |
+| **RunningHub Model API** | Enterprise model endpoints | Model API Key |
 | **Zhenzhen AI** | LLM aggregation platform (T8) | Zhenzhen AI Key |
 
-**Cloud usage**: no local setup required — just use the cloud service. Recommended platforms (new-user bonuses):
+**No local ComfyUI? Use cloud** (free credits for new users):
 
 | Platform | Bonus | Sign Up |
 |----------|-------|---------|
-| **Xiangong Cloud** | 4 free hours of RTX 4090 for new users | [Register](https://www.xiangongyun.com/register/83FV6Z) |
-| **Compshare** | ¥10 for new users | [Register](https://passport.compshare.cn/register?referral_code=6ciWIQ1SWkeBvh6brdIqbu) |
-| **RunningHub** | 1000 credits for new users, plus 100 daily on login | [Register](https://www.runninghub.cn/user-center/1897913667256500225/userPost?inviteCode=rh-v1476) |
+| **Xiangong Cloud** | 4 free hours of RTX 4090 | [Register](https://www.xiangongyun.com/register/83FV6Z) |
+| **Compshare** | ¥10 credit | [Register](https://passport.compshare.cn/register?referral_code=6ciWIQ1SWkeBvh6brdIqbu) |
+| **RunningHub** | 1000 credits + 100 daily | [Register](https://www.runninghub.cn/user-center/1897913667256500225/userPost?inviteCode=rh-v1476) |
 
-### 3. ComfyUI Extensions (Optional, Recommended)
+**Recommended extras**
 
-Install the companion extensions to get source workflows, LoRA preview images, and other enhancements:
-
-```bash
-git clone https://gitee.com/zttbb/ComfyUI-Common-Extension
-git clone https://github.com/ShunL12324/comfy-portal-endpoint
-```
-
-### 4. Browser Extension (Strongly Recommended)
-
-Install **Downloads Overwrite Already Existing Files** so saving API workflows overwrites the original file instead of producing duplicates like `workflow (1)` or `workflow (2)`.
-
----
+- **ComfyUI extensions**: [ComfyUI-Common-Extension](https://gitee.com/zttbb/ComfyUI-Common-Extension) · [comfy-portal-endpoint](https://github.com/ShunL12324/comfy-portal-endpoint) — source workflows, LoRA previews, etc.
+- **Browser extension**: *Downloads Overwrite Already Existing Files* — so saving an API workflow overwrites the file instead of creating `workflow (1)`.
 
 ## Installation & Launch
 
-After downloading and extracting the bundle:
-
 ```
-├── Update-and-Launch-Tushi.bat   # One-click update + launch (requires internet)
-└── Tushi-Package-Windows/
-    ├── Tushi/                    # Main program
-    │   ├── Tushi.exe             # Entry point
-    │   ├── UnityPlayer.dll       # Unity runtime
-    │   ├── GameAssembly.dll      # Game logic assembly
-    │   ├── baselib.dll           # Base runtime library
-    │   ├── UnityCrashHandler64.exe  # Crash handler
-    │   ├── Tushi_Data/           # Unity asset data
-    │   └── Bin/Res/              # Built-in resources (UI, fonts, materials)
-    ├── ExePack/                  # Helper tools
-    │   ├── TushiCLI.exe          # CLI entry (external scripts / AI agents)
-    │   ├── FFmpeg/               # Video engine (ffmpeg / ffprobe)
-    │   ├── process_server.exe    # Process service (127.0.0.1:19111)
-    │   └── openFolder.bat        # Helper script for opening asset folders
-    ├── External-Workflows (API)/ # API workflow directory for local ComfyUI
-    │   ├── Text2Image / Text2Video / Image2Image / Image2Video / Video2Video
-    │   ├── Inference Center / Generate Shots / Generate Script / Generate Novel / Infer Characters
-    │   ├── Prompt / Prompt2 / 3D Model / Audio
-    │   └── Source Text / Source Text Rewrite
-    ├── Run-Tushi.bat             # One-click launch script
-    └── README.md                 # This file
+├── 更新并启动途视.bat   # update + launch (needs internet)
+└── 途视包-Windows/
+    ├── 途视/                  # main app: 途视.exe + runtime + 途视_Data/ + Bin/Res/
+    ├── ExePack/               # helpers: 途视CLI.exe + FFmpeg (ffmpeg / ffprobe)
+    ├── 外部工作流（API）/      # API-workflow folders for local ComfyUI
+    ├── skills/                # AI-agent skills (tushi-cli-creation, tushi-cli-resume, …)
+    ├── 运行途视.bat           # one-click launch
+    ├── VC_redist.x64.exe      # Visual C++ runtime (install if prompted)
+    └── README.md / README.zh.md
 ```
 
-### Launching
+Launch via **更新并启动途视.bat** (recommended — syncs the latest build from Gitee) or **运行途视.bat** (direct launch).
 
-- Double-click **Update-and-Launch-Tushi.bat**: syncs the latest version from Gitee and launches (recommended for first install or upgrades)
-- Double-click **Run-Tushi.bat**: launches the current version directly (no update)
-- Running `Tushi/Tushi.exe` directly also works
+> `途视/GameData/` is your user data directory (cached images/videos) — created on first run, never overwritten by updates.
 
-> **Note**: `Tushi/GameData/` is the user data directory (locally cached images, videos, etc.). It is created on first run and is never overwritten during updates.
+## Forward Generation
 
----
+**Semi-auto (fine control)**: paste text → split chapters → script → shots → characters → batch text-to-image (scenes & characters) → voice-over → to-video → upscale → export
 
-## Getting Started
+**Full-auto (one click)**: paste text → auto split → pick template → adjust prompts → run → export
 
-### First-Run Setup
-
-1. Launch the app and open the **Settings** page
-2. Set the **project asset save path** (asset cache location)
-3. Set the **JianYing draft install path** (if you plan to export to JianYing)
-4. Configure **SDWebUI / ComfyUI / RunningHub** connection parameters
-5. Configure the ComfyUI workflows used for **inference / translation / voice-over**
-
-> **Note**: settings take effect immediately — no manual save. A red marker means the backend is not connected or a file was not found.
-
-### Creating a Project
-
-| Project Type | Description |
-|--------------|-------------|
-| **Forward** | Input a text passage and auto-generate shots into video |
-| **Reverse** | Import a video file or folder for scene splitting and reference-image generation |
-| **Generate Novel / Generate Script** | Rewrite from source text via inference, or generate a script |
-
-To import new content while keeping the project name, just run the flow again — it will overwrite.
-
----
-
-## Forward Generation Workflow
-
-### Semi-Automatic (Fine Control)
-
-```
-Paste text → split chapters → generate script → generate shots → edit characters
-→ batch text-to-image for scenes → batch text-to-image for characters → select audio (optional)
-→ shot images → multi-image/multi-video split (optional) → voice-over (optional)
-→ image-to-video / first-last-frame video → lip-sync (optional) → upscale (optional) → export
-```
-
-### Full-Automatic (One Click)
-
-```
-Paste text → auto shot split → choose template → adjust prompts → run
-→ lip-sync (optional) → upscale (optional) → export
-```
-
-### Core Feature Notes
-
-| Feature | Description |
+| Feature | What it does |
 |---------|-------------|
-| Auto chapter split | Splits text into chapter tabs using a "Chapter X" regex |
-| Novel / script generation | LLM rewrites and polishes source text, or produces script format |
-| Shot generation | LLM returns a shot table as JSON (scene / characters / dialogue / image prompt / video prompt / duration) and creates shots automatically |
-| Character editing | Centralized character parameters (prompt, LoRA, reference image, 3D model); character inference builds the library and attaches it to shots |
-| Batch text-to-image | One-click options: skip completed / all / odd / even / first shot only |
-| Multi-image / multi-video | A shot can hold multiple images and videos, and can be split into separate shots |
-| Voice-over | Generated via ComfyUI workflow; optional step |
-| Image-to-video | Supports text-to-video, image-to-video, video-to-video, first-last-frame video |
-| Lip-sync / upscale | Via RunningHub Model API (e.g. kling-lip-sync) or the corresponding workflow |
+| Auto chapter split | Split text into chapter tabs by a "Chapter X" regex |
+| Novel / script generation | LLM polishes source text or outputs script format |
+| Shot generation | LLM returns a JSON shot table (scene / characters / dialogue / image & video prompts / duration) and builds shots |
+| Character editing | Central character params (prompt, LoRA, reference image, 3D model); auto-builds a library and attaches to shots |
+| Batch text-to-image | Skip-done / all / odd / even / first-shot-only one-click modes |
+| Multi-image / multi-video | One shot holds several images & clips; split into separate shots in one click |
+| Voice-over | TTS via workflow (optional); align video speed to audio |
+| Video generation | text-to-video, image-to-video, video-to-video, first-last frame |
+| Lip-sync / upscale | Via the matching workflow (e.g. kling-lip-sync) |
 
-> **Note**: the inference center defaults to RH free models (quality floor). For better results, build your own workflows or use paid models.
-
----
-
-## Reverse Engineering Workflow
+## Reverse Engineering
 
 ```
-Import video → adjust split threshold → auto scene split → extract keyframes as references
-→ OCR subtitle text (optional) → reference-image generation / prompt reverse-engineering
-→ ...hand off to the forward pipeline
+Import video → adjust split threshold → auto scene split → extract keyframes
+→ OCR subtitle text (optional) → reference-image generation / prompt reverse-engineering → hand off to forward
 ```
 
-- **Scene splitting**: FFmpeg-based scene detection with adjustable threshold, min/max segment duration; the whole clip can also be used as one segment
-- **Keyframe extraction**: grabs frames at time intervals as reference images
-- **Subtitle recognition**: local OCR (PPOCRv5) extracts text from video/images as source text for the forward pipeline
+- **Scene split**: FFmpeg scene detection (adjustable threshold, min/max segment length; also usable as one segment)
+- **Keyframes**: grab frames at time intervals as reference images
+- **Subtitle recognition**: local OCR (PPOCRv5) extracts text as source text for the forward pipeline
 
-> **Note**: reverse and forward share the same framework and connect seamlessly. Every step's prompts and workflows are yours to adjust.
-
----
+Reverse and forward share one framework and connect seamlessly — every prompt and workflow is configurable.
 
 ## Workflow Configuration
 
-### Supported Models & Platforms
+### Workflow categories → function buttons
 
-Tushi can call all major models below, letting you balance cost against quality:
+Each folder under `外部工作流（API）/` (External-Workflows API) maps to a function button:
 
-| Type | Platforms / Models |
-|------|--------------------|
-| **Free models** | RunningHub free models |
-| **Major CN models** | Doubao, Kling, Jimeng, Hailuo (MiniMax), Vidu |
-| **Major international** | Sora, BigBanana, and more |
-| **Generic workflows** | Any ComfyUI-compatible workflow |
+| Category | Workflows |
+|----------|-----------|
+| **推理 Inference** | Infer Characters · Generate Novel · Generate Script · Generate Shots · Source Text · Source Text Rewrite · Prompt · Prompt2 |
+| **生图 Image** | Text-to-Image · Image-to-Image |
+| **视频 Video** | Text-to-Video · Image-to-Video · Reference-to-Video · Video-to-Video |
+| **音频 Audio** | Audio (TTS) |
+| **模型3D Model** | 3D Model |
 
-### Workflow Categories
+### Binding rules
 
-Each subdirectory under `External-Workflows (API)/` maps to a function button in the app:
+Workflows identify inputs & outputs by **node title**:
 
-| Category | Workflow Types |
-|----------|----------------|
-| **Image** | Text-to-image, image-to-image, face swap, outfit swap, image editing, upscale |
-| **Video** | Text-to-video, image-to-video, video-to-video, face swap, first-last frame, lip-sync, motion transfer, background audio, upscale |
-| **Inference** | Inference center, novel, script, shots, characters |
-| **Other** | Prompt, Prompt2, 3D model, audio, source text, source text rewrite |
+- **Input node title** format: `输入-数据来源-数据类型` (e.g. `输入-当前镜头-提示词`), with 30+ input types: source text, prompt, reference image, reference video, audio, characters, 3D model, etc.
+- **Output node title** format: `输出=类型` (text, image, video, audio, 3D model all supported)
+- **Data sources**: current / previous / next shot, favorited / project character, custom
 
-### Workflow Binding Rules
+### Setup
 
-Workflows identify inputs and outputs by **node title**:
+- **Local ComfyUI**: get it working in the browser → export API format into `外部工作流（API）/<category>` → bind inputs/outputs in Tushi (blue = defaults, yellow = modified)
+- **RunningHub**: assign the workflow (browse/search templates & AI apps) → configure API Key → fill bound inputs
+- **Extra parameters**: custom params (frame rate, duration, text, local paths…) set in Settings; empty shots use workflow defaults.
 
-- Input node title format: `input-data-source-data-type` (e.g. `input-current-shot-prompt`), supporting 30+ input types such as source text, prompt, image, reference image, reference video, audio, and character
-- Output node title format: `output=image` (images, video, audio, text, and 3D models can all be outputs)
-- Data sources: current shot / previous shot / next shot / favorited character / project character / custom
+## AI Inference & Voice-Over
 
-### ComfyUI Workflow Setup (Local)
+All inference runs through **workflows** (drop the workflow into the matching folder):
 
-1. Get the workflow working in the ComfyUI browser
-2. Export it in **API format** and place it in the matching directory under `External-Workflows (API)/` (one function button = one folder)
-3. Bind input parameters (cross-shot, character selection) and output nodes inside Tushi
-4. Blue boxes are workflow default parameters; yellow means modified
+| Type | Purpose |
+|------|---------|
+| Source Text Rewrite | polish / condense text |
+| Prompt / Prompt2 | visual prompt → English prompt |
+| Character Inference | auto-build the character library |
+| Generate Novel / Script | chapter text / script format |
+| Generate Shots | shot table (scene / dialogue / prompts) |
 
-### RunningHub Workflow Setup (Cloud)
-
-1. Assign/bind the workflow in RunningHub (you can browse and search workflow templates and AI apps inside Tushi)
-2. Configure your RunningHub API Key
-3. Review the workflow's bound input parameters and fill them in inside Tushi
-
-### SDWebUI Support
-
-> SDWebUI is no longer receiving new features. Currently supported: image generation, upscale, LoRA, ControlNet, WD prompt reverse-engineering
-
-### Extra Parameters
-
-Custom parameters are supported (frame rate, duration, text, local asset paths, etc.). Configure them in Settings first; if a shot leaves them empty, the workflow defaults apply.
-
----
-
-## AI Inference
-
-Tushi has built-in LLM inference for text rewriting, prompt extraction, character extraction, and shot generation. Inference always runs through **ComfyUI workflows** — just drop the matching workflow into the corresponding directory under `External-Workflows (API)/`:
-
-| Type | Input | Output | Purpose |
-|------|-------|--------|---------|
-| Source Text Rewrite | current page/chapter text | rewritten text | polishing, condensing |
-| Prompt | rewritten text | visual prompt | for text-to-image |
-| Prompt2 | prompt | translated text | English prompt generation |
-| Character Inference | current page of source text | character profile (auto-builds character library) | character management |
-| Generate Novel | combined data + template | novel body | chapter text |
-| Generate Script | combined data + template | script text | script format |
-| Generate Shots | combined data + template | shot table (scene / dialogue / image prompt / video prompt) | auto shot splitting |
-| Inference Center | image/audio/video + characters + workflows | AI decisions (auto-edit shots/characters and call workflows) | fully automated creation |
-
----
-
-## Voice-Over
-
-Voice-over also runs through **ComfyUI workflows** (the `Audio` category): text in → TTS node → audio file out.
-
-- Each shot can specify an **audio character** (separate from the visual character), with support for a global voice
-- Volume and speed are adjustable, and video duration can be aligned to audio (automatic speed adjustment)
-
----
+**Voice-over**: also a workflow (Audio category) — text → TTS node → audio file. Each shot can set an audio character (separate from the visual one), a global voice, volume/speed, and video duration aligned to audio.
 
 ## Project Interface
 
-### Views
-
-| View | Description |
-|------|-------------|
-| **List view** | Flat shot list for per-item operations |
-| **Panel view** | Shot cards with image and text side by side |
-
-### Shot Management
-
-- **Red background**: not yet complete; **green background**: complete
-- Shows image count, video count, and workflow runtime for the current shot
-- Supported operations: move up/down, insert, delete, duplicate, **merge** (concatenate video/audio/text), **split** (multi-image/multi-video into sub-shots), swap
-
-### Image / Video Management
-
-Images and video are **two independent management areas**, each supporting add, delete, select, and copy-as-reference:
-
-- **Images**: a shot can hold multiple images, with mask editing, sketch input, and framing tools
-- **Video**: a shot can hold multiple clips, with trim, speed change, reverse, frame extraction, resolution/frame-rate adjustment
-- When text-to-video runs without an input image, a first-frame image is created automatically on success
-- Shots also support reference images, reference video, and 3D models
-
-### Advanced Operations
-
-- **Image editing**: open details for mask editing, sketch input, and 360 framing
-- **Video concatenation**: use "merge upward" on a shot to concatenate clips (do this after upscaling — very long clips can fail to process)
-- **Asset selection**: local images/video/audio, or images from adjacent shots; the seconds parameter controls which frame to grab
-- **One-click actions**: batch source text → prompt, prompt → prompt2, or clear images / video / voice-over / references — applied globally or to a single chapter
-
----
+- **Views**: list view (flat, per-item) or panel view (image + text side by side)
+- **Shot states**: red = pending, green = complete; shows image/video counts & runtime
+- **Shot ops**: move, insert, delete, duplicate, **merge** (concat video/audio/text), **split** (multi-image/video → sub-shots), swap
+- **Images** & **video** are two independent areas: add / delete / select / copy-as-reference; mask editing, sketch, framing; trim, speed, reverse, frame extraction, resolution
+- **Advanced**: reference image/video & 3D model per shot; batch one-click text→prompt→prompt2 or clear image/video/voice/reference (global or per chapter)
 
 ## Export
 
-### Export Options
-
 | Option | Description |
 |--------|-------------|
-| **Export JianYing draft** | Generates a JianYing project (image/video + subtitles + animation + transitions + position animation + effects + voice-over); JianYing renders it |
-| **Export video** | FFmpeg composites an mp4 directly (source video + voice-over + background music), no effects |
-| **Export images** | Exports shot images |
-| **Export CSV** | Exports rewritten text / prompts / translated text |
+| **JianYing draft** | Image/video + subtitles + animation + transitions + position animation + effects + voice-over (rendered by JianYing) |
+| **Video (mp4)** | FFmpeg composite of source video + voice-over + BGM, no effects |
+| **Images** | Export shot images |
+| **CSV** | Export rewritten text / prompts / translated text |
 
-### JianYing Draft Effects
-
-- **Shot animation**: in / out / combined animation, with random, sequential, or fixed modes
-- **Transitions**: transition effects between shots
-- **Position animation**: horizontal/vertical keyframe movement
-- **Shot effects**: built-in JianYing effects (identified by resource ID)
-- **Subtitles**: auto-generated subtitle track from rewritten text, with configurable color, size, and position
-- **Intro/outro**: intro text, global text, outro video, outro music (loopable)
-
-### Export Settings
-
-- **Shots per file**: how many shots go into one video
-  - Set to `9999`: the whole chapter merges into a single video
-  - Set to `1`: each shot exports as its own video
-- **Merge chapters**: merge chapter output
-- **Align video duration to audio**: automatically adjusts video speed to match voice-over length
-- The right panel shows estimated export count, total duration, and total shot count
-
----
+Draft effects: shot in/out/combined animation (random/sequential/fixed), transitions, keyframe position animation, built-in JianYing effects, auto subtitle track (color/size/position), intro text / global text / outro video & music. Export settings: **shots per file** (`9999` = whole chapter in one video, `1` = one video per shot), merge chapters, align video length to audio, live export estimates on the right panel.
 
 ## Command Line (CLI)
 
-Beyond the UI, Tushi ships a command-line entry point: `ExePack/TushiCLI.exe`. It lets scripts, batch files, and AI agents drive the whole creation pipeline — **the director stays outside, the factory stays in Tushi**: the outside decides *what to run*, while workflow dispatch, asset collection, and export remain inside Tushi.
-
-### How It Works
+`ExePack/途视CLI.exe` lets scripts, batch files & AI agents drive the whole pipeline — **the director stays outside, the factory stays in Tushi**.
 
 ```
-CLI / script / AI agent
-        │  POST {"cmd":"shot gen","args":{...}}
-        ▼
-Built-in service in Tushi main app — 127.0.0.1:19112   ← Tushi/Tushi.exe must be running
-        │
-        ▼
-Workflow execution → asset filing → export
+CLI / script / AI agent ──▶ built-in service 127.0.0.1:19112 ──▶ workflow → filing → export
+                                    (途视/途视.exe must be running)
 ```
 
-- The CLI does no work itself; it only forwards. **The main app must be running** (the first run usually needs `login`)
-- Default port `19112`; the main app can switch with `Tushi.exe --aicli-port 19212`, and enable auth with `--aicli-token xxx` (then commands must pass `--token xxx`)
-- **All output is a single line of JSON** — check `ok` for success; process exit code is 0 / 1
-- Long tasks like generation and export return a `jobId` and return immediately; add `--wait` to poll until finished
-
-### Usage
+- Forwards only; **the main app must be running** (usually `login` first)
+- Port `19112` (override: `途视.exe --aicli-port <port>`; auth: `--aicli-token xxx` + `--token xxx`)
+- **All output is one line of JSON** — check `ok`; exit code 0/1
+- Long tasks return a `jobId`; add `--wait` to poll until done
 
 ```bash
-ExePack\TushiCLI.exe <command> [key=value ...] [JSON object] [options]
+ExePack\途视CLI.exe <command> [key=value ...] [JSON] [options]
 ```
 
 | Option | Description |
 |--------|-------------|
-| `--json '{...}'` | Pass parameters as JSON — use this for arrays and nested structures |
-| `--arg key=value` | Append a single parameter, repeatable |
-| `--wait` | Poll a long task until it finishes (default returns jobId immediately) |
-| `--poll 2` | Polling interval in seconds when using `--wait` (default 2) |
-| `--timeout 600` | Max wait seconds for `--wait`; 0 = unlimited |
-| `--port` / `--host` / `--url` | Specify the service address |
-| `--token` | Auth token (when the main app has auth enabled) |
+| `--json '{...}'` | Pass nested/array params as JSON |
+| `--arg key=value` | Append one param (repeatable) |
+| `--wait` `--poll 2` `--timeout 600` | Poll a long task (interval / max seconds) |
+| `--port` / `--host` / `--url` / `--token` | Service address / auth token |
 
-Command names are case-insensitive: `shot.gen`, `Shot_Gen`, and `shot gen` are equivalent. When in doubt about parameters, use **introspection**:
+Commands are case-insensitive (`shot gen` = `shot.gen`). **The exact command set & parameters come from the running app — introspect first**:
 
 ```bash
-ExePack\TushiCLI.exe help                      # List all commands
-ExePack\TushiCLI.exe schema name="shot creates"  # Show a command's parameters
+ExePack\途视CLI.exe help                       # list available commands
+ExePack\途视CLI.exe schema name="shot creates" # show a command's parameters
 ```
 
-### Command Reference
+**What you can drive** (capability overview — live names/params via `help` / `schema`):
 
-| Group | Commands | Description |
-|-------|----------|-------------|
-| **Connection / Introspection** | `help`, `schema`, `system status`, `login`, `ui main` | Command list, parameter help, health check, login, raise main window |
-| **Settings** | `setting get` / `set` / `list` | Read/write config items (e.g. JianYing draft path) |
-| **Project** | `project list` / `get` / `create` / `set` / `delete` / `progress` | Project CRUD and progress |
-| | `project key add` / `list` / `delete` | Chapter (tab) management |
-| | `project handoff get` / `set`, `project setsound` | Handoff info, global voice |
-| **Templates** | `template list` / `get` | Project templates |
-| **Characters** | `role creates` / `list` / `get` / `set` / `gen` / `stop` / `copy` / `bind` / `res` / `delete` | Character library and batch character-sheet generation |
-| **Shots** | `shot creates` / `list` / `get` / `set` / `gen` / `stop` / `insert` / `delete` / `trim` / `res` / `frame` | Shot CRUD, batch generation, asset and continuity management |
-| | `shot setsound` / `shot setaudiorole` / `shot setusevideo` | Dialogue audio, voice-over character, whether to use video |
-| **Workflows** | `workflow list` / `get` / `inputs` | Workflow list (requires template name) and inputs/outputs |
-| | `workflow temp list` / `get` / `set` | Template workflows |
-| | `workflow param list` / `set` / `bind`, `workflow customize list` / `set` / `delete` | Parameter binding and custom parameters |
-| | `workflow intype list`, `workflow out type list`, `workflow out set` | Input / output types |
-| **Run** | `run preview` / `status` / `list` / `qa` | Submit preview, check progress by jobId, pre-export QC |
-| **Export** | `export draft`, `export video` | JianYing draft / mp4 output |
-| **Audio** | `sound list` / `get` / `create` / `set` / `delete`, `sound tab list` / `create` | Voices and voice categories |
+| Area | What you can do |
+|------|-----------------|
+| Introspection / connection | list commands, read params, health check, login, raise UI |
+| Settings | read/write config (e.g. JianYing draft path) |
+| Projects | create/read/update/delete projects, chapters, handoff, global voice |
+| Templates / Characters | read templates; build character library & batch character sheets |
+| Shots | CRUD, batch generation, assets & continuity |
+| Workflows | list/import, bind inputs/outputs, custom params, template workflows |
+| Run / Export / Audio | submit & track runs, pre-export QC; JianYing draft / mp4; voices & categories |
 
-### Typical Flow
+**Caveats**: introspect first — `shot creates` prompt fields are `imagePrompt` / `videoPrompt` (a wrong field name returns success but writes empty content; `shot get` to verify). PowerShell may swallow output in scripts — call via Python `subprocess` and read UTF-8. No separate account system; it uses the main app's login & project files.
 
-```bash
-ExePack\TushiCLI.exe login
-ExePack\TushiCLI.exe project create projectName="My Short Film"
-ExePack\TushiCLI.exe role creates projectName="My Short Film" --json '{"roleItems":[{"name":"Alan"}]}'
-ExePack\TushiCLI.exe role gen projectName="My Short Film" workflowSn=6102 --json '{"roleSn":[1]}'
-ExePack\TushiCLI.exe shot creates projectName="My Short Film" --json '{"shotItems":[{"dialogue":"...","imagePrompt":"...","videoPrompt":"..."}]}'
-ExePack\TushiCLI.exe shot list projectName="My Short Film"
-ExePack\TushiCLI.exe shot gen projectName="My Short Film" workflowSn=10401 --json '{"shotSn":[1,2,3]}' --wait
-ExePack\TushiCLI.exe run qa projectName="My Short Film"
-ExePack\TushiCLI.exe export draft projectName="My Short Film" --wait
-```
+## AI Agent Skills
 
-Get `workflowSn` from `workflow list`, and `roleSn` / `shotSn` from `role list` / `shot list`. Once a generation command returns a `jobId`, check progress with `run status jobId=xxx`.
+The package bundles a set of **AI-agent skills** (`skills/`) that let an AI assistant — Claude Code, Trae, Cursor, … — drive the whole pipeline for you: idea → script → storyboard → images → video → voice-over → JianYing draft. The AI sits in the director's seat and operates 途视 through the CLI.
 
-### When to Use It & Caveats
+| Skill | What it does |
+|-------|--------------|
+| `tushi-cli-creation` | From-scratch production (local). The AI launches 运行途视.bat, creates the project, pulls the director template, generates characters / shots / images / video / voice-over, and exports a JianYing draft. |
+| `tushi-cli-resume` | Take over a half-finished project. The AI reads the real project state through the CLI and continues from the breakpoint — no guessing. |
 
-- **Good for**: batch scripts, scheduled tasks, external AI agents driving fully automated production; non-interactive pipelines for multi-user collaboration
-- **Introspect first**: parameters are defined by `schema`. The prompt fields in `shot creates` are `imagePrompt` / `videoPrompt` — a wrong field name returns success but writes empty content, so `shot get` to spot-check after submitting
-- The Windows console (PowerShell) occasionally swallows output; in scripts, call it from Python `subprocess` and read as UTF-8
-- The CLI is an external front door to the same UI capabilities — there is **no separate account system**; it uses the main app's current login state and project files
-
----
+**How to use**: copy the skill folder into your AI assistant's skills directory, then simply say something like *"用途视出一段短剧."* The AI will start 运行途视.bat itself and drive 途视 through 途视CLI.exe (or the HTTP service at `127.0.0.1:19112`). Pairs with the CLI section above — command names & parameters are always introspected at runtime (`help` / `schema` / `template get`).
 
 ## FAQ
 
-### Q: Do I have to use a local ComfyUI?
+<details>
+<summary>Do I have to use a local ComfyUI?</summary>
 
-No. You can use cloud services such as Xiangong Cloud, Compshare, or RunningHub with no local setup.
+No — use cloud services (Xiangong Cloud, Compshare, RunningHub) with no local setup.
+</details>
 
-### Q: How do I configure workflows?
+<details>
+<summary>How do I configure workflows?</summary>
 
-For local use: get the workflow running in the ComfyUI browser, export it in API format, and drop it into the matching directory — one function button per folder.
-For cloud use: assign the workflow, then review and bind the input parameters inside Tushi.
+Local: run it in ComfyUI → export API format → drop into the matching folder (one function button = one folder). Cloud: assign the workflow, then review & bind inputs in Tushi.
+</details>
 
-### Q: What does a red marker mean?
+<details>
+<summary>What does a red marker mean?</summary>
 
-The corresponding backend is not connected (ComfyUI / RunningHub / SDWebUI), or it is connected but the file was not found.
+A backend (ComfyUI / RunningHub) isn't connected, or its workflow file wasn't found.
+</details>
 
-### Q: Can I mix reverse and forward workflows?
+<details>
+<summary>Can I mix reverse and forward?</summary>
 
-Yes. Both share the same framework and connect seamlessly.
+Yes — they share one framework and connect seamlessly.
+</details>
 
-### Q: The CLI does nothing / won't connect. What now?
+<details>
+<summary>The CLI won't connect. What now?</summary>
 
-First confirm the main app is running: `TushiCLI.exe system status` returning JSON means the service is up. If you changed the port or it's occupied, start the main app with `Tushi.exe --aicli-port 19212` and pass `--port 19212` on the command side; the process holding the port is written to the startup log.
+Confirm the main app is running — `途视CLI.exe system status` returning JSON means it's up. If you moved the port, start `途视.exe --aicli-port <port>` and pass `--port <port>`; the port-holder is logged at startup.
+</details>
 
-### Q: What backend handles inference, translation, and voice-over?
+<details>
+<summary>What backend handles inference, translation & voice-over?</summary>
 
-All of them go through **ComfyUI workflows**. Place inference / translation / voice-over workflows in the matching directory under `External-Workflows (API)/` and select them in the app. Translation output is written to "Prompt2" for English prompt generation.
-
----
-
-## Video Tutorials
-
-📺 **Bilibili channel**: [@zzbbto](https://space.bilibili.com/199774118)
-
-The author keeps publishing Tushi tutorials, tips, and new-feature walkthroughs. Feel free to follow.
-
----
+All through **workflows** — place them in the matching folder and select in the app. Translation output goes to "Prompt2" (English prompts).
+</details>
 
 ## Resources
 
 | Resource | Link |
 |----------|------|
-| **This repository (Gitee)** | https://gitee.com/zttbb/tushi-package-windows |
+| **This repo (Gitee)** | https://gitee.com/zttbb/tushi-package-windows |
 | **ComfyUI extensions** | [ComfyUI-Common-Extension](https://gitee.com/zttbb/ComfyUI-Common-Extension) · [comfy-portal-endpoint](https://github.com/ShunL12324/comfy-portal-endpoint) |
 | **Bilibili tutorials** | https://space.bilibili.com/199774118 |
 | **Xunlei Pan (bundle)** | https://pan.xunlei.com/s/VOZTX7ULtVWKUTvuBdUaY7BPA1?pwd=gjen |
 | **Quark Pan** | https://pan.quark.cn/s/eb8e9af1a277?pwd=susf |
-| **Xiangong Cloud** | https://www.xiangongyun.com/register/83FV6Z |
-| **Compshare** | https://passport.compshare.cn/register?referral_code=6ciWIQ1SWkeBvh6brdIqbu |
-| **RunningHub** | https://www.runninghub.cn/user-center/1897913667256500225/userPost?inviteCode=rh-v1476 |
 
 ---
 
-<p align="center">
-  Made with ❤️ by <a href="https://space.bilibili.com/199774118">@zzbbto</a>
-</p>
+<div align="center">
+
+⭐ **If Tushi helped you make something cool, give the repo a star and follow [@zzbbto](https://space.bilibili.com/199774118) for tutorials.**
+
+Made with ❤️ by [@zzbbto](https://space.bilibili.com/199774118)
+
+</div>
