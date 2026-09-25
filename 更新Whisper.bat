@@ -1,4 +1,4 @@
-﻿u{FEFF}@echo off
+@echo off
 chcp 65001 > nul
 title Tushi Whisper Sync
 setlocal

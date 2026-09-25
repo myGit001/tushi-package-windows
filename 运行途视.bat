@@ -14,6 +14,3 @@ if exist "%~dp0更新Whisper.bat" (
     echo ============================================
     call "%~dp0更新Whisper.bat"
 )
-
-echo.
-pause >nul
