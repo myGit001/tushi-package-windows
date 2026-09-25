@@ -56,7 +56,7 @@ description: >-
 | 分镜没图 | 确认角色已绑且已有图 → `run preview` → 风格/分辨率不对用 `workflow customize set` / `workflow param set` 改 → `shot gen`（融合工作流）。`镜头其它1(空)` 可忽略 |
 | 分镜没视频 | `shot set` 的 `time`=时长； `run preview` → `shot gen`（视频工作流） |
 | 分镜没配音 | 仅视频不自带声（`shot get` 的 `curVideoHaveAudio=false`）：**配音就在该角色身上，不是独立角色**——同一角色既出画面图也出声音，没有单独的「配音」角色（筛选面板的「配音」只是该角色有配音的筛选项）。**先设计后绑定，声音按角色维度复用**：`role list` 扫现成角色，同一角色/同一声线跨集直接复用其 Sn（解说类可全片一个，对话剧每角色各一个）；该角色还没建（如解说旁白无画面角色）才 `role creates` 建角色 → 声音设计类工作流 `role gen` 设计声音（产物存在该角色 `audio` 字段，跨集复用该角色即复用声音）→ 绑到分镜：`shot setaudiorole`（参数 `soundRoleSn`，先 `schema`，同角色每镜绑同一 Sn；`shot setsound` 是绑独立音色，一般不用）→ `shot gen` 文本克隆工作流出台词配音 |
-| 都齐了没导出 | 先 `run qa` 确认无 issue，再导出：剪映 `export draft`；mp4 `export video` |
+| 都齐了没导出 | 先 `run qa` 确认无 issue → 剪映 `export draft`；mp4 `export video`。**字幕：导出剪映会自动补提取（whisper）并写入字幕轨道**，导出后**抽查**几镜 `shot subtitle get` 核对文本与时间码，个别错字用 `shot subtitle set` 改，不用逐镜手动校准 |
 
 队列占用：等当前 job，或 `shot stop` / `role stop`。不要 `run stop`。
 

@@ -1,0 +1,3 @@
+[submodule "ExePack/Whisper"]
+	path = ExePack/Whisper
+	url = https://gitee.com/zttbb/tushi-whisper.git

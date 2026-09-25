@@ -41,9 +41,13 @@ description: >-
 - 根目录：交付物（成片、文档、脚本）
 - 子目录：`交件材料/`、`样片/`等
 
+## 文本硬门：不过不 gen（本地加严）
+> 剧情/提示词错了是整批返工，视频瑕疵重抽卡就行——能在文本层发现的问题绝不带到生成层。口径：`shot list` + `shot get` 全量拉 → 逐镜过（叠加模板 1100 审查全项，lint 依据以当次 `template get` 为准）→ `shot set` 自修 → 全过才进首次 gen。
+- **冷读**（源《一袖成穹》"剧情看不懂"）：装第一次看的观众，逐镜答"谁/在哪/在干嘛"；答不出的镜先改文本再出图。
+
 ## 本地出错速查（其余报错看模板 1100 的「出错速查」）
 | 现象 | 应对 |
 |---|---|
 | connection refused / Failed to fetch | 途视没开：按开场第 1 步自己启动途视，别只停下 |
-| template get 报 content not loaded | 先 `template list` 预热再重试 |
+| template get 报 content not loaded | 先 `template list` 预热再重试；**预热是异步的，list 后立刻 get 仍可能报，隔 2~3 秒再重试** |
 | 这条命令已连续失败 N 次 | 执行端熔断，原样重发不转发：换做法（改参数/换工作流/preview 定位/交用户） |
