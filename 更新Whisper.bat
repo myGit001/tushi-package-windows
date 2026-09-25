@@ -28,15 +28,8 @@ set GIT_ASKPASS=
 if not exist "%WHISPER_DIR%" mkdir "%WHISPER_DIR%"
 
 pushd "%PACK_DIR%"
-findstr /c:"tushi-whisper" .gitmodules >nul 2>&1
-if not errorlevel 1 (
-  echo [whisper] submodule update...
-  "%GIT_EXE%" -c credential.helper= -c core.askpass= submodule update --init --force --recursive
-  if errorlevel 1 (
-    "%GIT_EXE%" -c http.proxy=%proxy_url% -c https.proxy=%proxy_url% -c credential.helper= -c core.askpass= submodule update --init --force --recursive
-  )
-  goto MERGE
-)
+
+rem 独立模式：whisper_cli 作为 tushi-whisper 的浅克隆，由下方 fetch/reset 或 clone 更新到最新
 
 if exist "%INSTALL_DIR%\.git" (
   echo [whisper] updating...
