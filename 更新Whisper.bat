@@ -1,11 +1,11 @@
-﻿@echo off
+﻿u{FEFF}@echo off
 chcp 65001 > nul
 title Tushi Whisper Sync
 setlocal
 
 set "PACK_DIR=%~dp0"
 set "WHISPER_DIR=%PACK_DIR%ExePack\Whisper"
-set "INSTALL_DIR=%WHISPER_DIR%\whisper_cli"
+set "CONTENT_DIR=%WHISPER_DIR%\whisper_cli"
 set "URL_PUBLIC=https://gitee.com/zttbb/tushi-whisper.git"
 
 if not defined TUSHI_PROXY_HOST set "proxy_host=127.0.0.1"
@@ -27,43 +27,40 @@ set GIT_ASKPASS=
 
 if not exist "%WHISPER_DIR%" mkdir "%WHISPER_DIR%"
 
-pushd "%PACK_DIR%"
+rem 独立模式：tushi-whisper 仓库本体克隆到 WHISPER_DIR（ExePack\Whisper），
+rem 内容目录为 CONTENT_DIR（whisper_cli），whisper_cli.exe 位于其中
 
-rem 独立模式：whisper_cli 作为 tushi-whisper 的浅克隆，由下方 fetch/reset 或 clone 更新到最新
-
-if exist "%INSTALL_DIR%\.git" (
+if exist "%WHISPER_DIR%\.git" (
   echo [whisper] updating...
-  "%GIT_EXE%" -C "%INSTALL_DIR%" -c credential.helper= -c core.askpass= fetch --depth 1 origin
+  "%GIT_EXE%" -C "%WHISPER_DIR%" -c credential.helper= -c core.askpass= fetch --depth 1 origin
   if errorlevel 1 (
-    "%GIT_EXE%" -C "%INSTALL_DIR%" -c http.proxy=%proxy_url% -c https.proxy=%proxy_url% -c credential.helper= -c core.askpass= fetch --depth 1 origin
+    "%GIT_EXE%" -C "%WHISPER_DIR%" -c http.proxy=%proxy_url% -c https.proxy=%proxy_url% -c credential.helper= -c core.askpass= fetch --depth 1 origin
   )
-  "%GIT_EXE%" -C "%INSTALL_DIR%" reset --hard FETCH_HEAD >nul 2>&1
+  "%GIT_EXE%" -C "%WHISPER_DIR%" reset --hard FETCH_HEAD >nul 2>&1
   goto MERGE
 )
 
-if exist "%INSTALL_DIR%\whisper_cli.exe" (
+if exist "%CONTENT_DIR%\whisper_cli.exe" (
   echo [whisper] local copy exists, skip download.
   goto MERGE
 )
 
 echo [whisper] first download, about 670MB ...
-"%GIT_EXE%" -c credential.helper= -c core.askpass= clone --depth 1 "%URL_PUBLIC%" "%INSTALL_DIR%"
+"%GIT_EXE%" -c credential.helper= -c core.askpass= clone --depth 1 "%URL_PUBLIC%" "%WHISPER_DIR%"
 if errorlevel 1 (
   echo [whisper] direct failed, try proxy ...
-  "%GIT_EXE%" -c http.proxy=%proxy_url% -c https.proxy=%proxy_url% -c credential.helper= -c core.askpass= clone --depth 1 "%URL_PUBLIC%" "%INSTALL_DIR%"
+  "%GIT_EXE%" -c http.proxy=%proxy_url% -c https.proxy=%proxy_url% -c credential.helper= -c core.askpass= clone --depth 1 "%URL_PUBLIC%" "%WHISPER_DIR%"
   if errorlevel 1 (
     echo [whisper] download failed, subtitle feature unavailable.
-    popd
     exit /b 0
   )
 )
 
 :MERGE
-if exist "%INSTALL_DIR%\tools\MergeBigFiles.ps1" (
-  powershell -NoProfile -ExecutionPolicy Bypass -File "%INSTALL_DIR%\tools\MergeBigFiles.ps1" -Root "%INSTALL_DIR%"
+if exist "%CONTENT_DIR%\tools\MergeBigFiles.ps1" (
+  powershell -NoProfile -ExecutionPolicy Bypass -File "%CONTENT_DIR%\tools\MergeBigFiles.ps1" -Root "%CONTENT_DIR%"
 )
-popd
-if exist "%INSTALL_DIR%\whisper_cli.exe" (
+if exist "%CONTENT_DIR%\whisper_cli.exe" (
   echo [whisper] ready.
 ) else (
   echo [whisper] not installed, subtitle feature unavailable.
