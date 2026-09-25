@@ -1,23 +1,23 @@
-@echo off
-chcp 936 > nul
+ï»¿@echo off
+chcp 65001 > nul
 
-REM ²»ÔÙµ¥¶ÀÆôÓÃ HTTP ½ø³Ì£¨process_server£©£ºWindows Íâ²¿½ø³ÌÖ´ÐÐÒÑ¸Ä×ß±¾µØÇÅ£¨Game.WindowsProcessBridge£©£¬
-REM ²»ÔÙ¾­ {BaseUrl}/execute-process¡£ÈçÐè»Ö¸´·þÎñ¶ËÖ´ÐÐ£¬È¡ÏûÏÂÐÐ×¢ÊÍ¡£
+REM ä¸å†å•ç‹¬å¯ç”¨ HTTP è¿›ç¨‹ï¼ˆprocess_serverï¼‰ï¼šWindows å¤–éƒ¨è¿›ç¨‹æ‰§è¡Œå·²æ”¹èµ°æœ¬åœ°æ¡¥ï¼ˆGame.WindowsProcessBridgeï¼‰ï¼Œ
+REM ä¸å†ç» {BaseUrl}/execute-processã€‚å¦‚éœ€æ¢å¤æœåŠ¡ç«¯æ‰§è¡Œï¼Œå–æ¶ˆä¸‹è¡Œæ³¨é‡Šã€‚
 REM start "" "%~dp0ExePack/process_server.exe" --host 127.0.0.1 --port 19111
 
-REM ÏÈÆô¶¯Í¾ÊÓÖ÷³ÌÐò£¨start Á¢¼´·µ»Ø£¬²»µÈ´ý¡¢²»×èÈûÍ¾ÊÓ£©
-if exist "%~dp0Í¾ÊÓ\Í¾ÊÓ.exe" (
-    start "" /d "%~dp0Í¾ÊÓ" "%~dp0Í¾ÊÓ\Í¾ÊÓ.exe" --aicli-port 19112
+REM å…ˆå¯åŠ¨é€”è§†ä¸»ç¨‹åºï¼ˆstart ç«‹å³è¿”å›žï¼Œä¸ç­‰å¾…ã€ä¸é˜»å¡žé€”è§†ï¼‰
+if exist "%~dp0é€”è§†\é€”è§†.exe" (
+    start "" /d "%~dp0é€”è§†" "%~dp0é€”è§†\é€”è§†.exe" --aicli-port 19112
 ) else (
-    echo [´íÎó] Î´ÕÒµ½ Í¾ÊÓ\Í¾ÊÓ.exe
+    echo [é”™è¯¯] æœªæ‰¾åˆ° é€”è§†\é€”è§†.exe
 )
 
-REM Í¾ÊÓÒÑÆô¶¯£¬´ËºóÔÙÍ¬²½ Whisper ×é¼þ£¨²»×èÈûÍ¾ÊÓ£»´Ë´¦Êä³ö¸üÐÂÈÕÖ¾£©
-if exist "%~dp0¸üÐÂWhisper.bat" (
+REM é€”è§†å·²å¯åŠ¨ï¼Œæ­¤åŽå†åŒæ­¥ Whisper ç»„ä»¶ï¼ˆä¸é˜»å¡žé€”è§†ï¼›æ­¤å¤„è¾“å‡ºæ›´æ–°æ—¥å¿—ï¼‰
+if exist "%~dp0æ›´æ–°Whisper.bat" (
     echo ============================================
-    echo   ¸üÐÂ Whisper ×é¼þ
+    echo   æ›´æ–° Whisper ç»„ä»¶
     echo ============================================
-    call "%~dp0¸üÐÂWhisper.bat"
+    call "%~dp0æ›´æ–°Whisper.bat"
 )
 
 echo.
