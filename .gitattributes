@@ -1,1 +1,5 @@
 途视/途视_Data/resources.assets filter=lfs diff=lfs merge=lfs -text
+
+# 批处理必须 CRLF，否则 cmd.exe 无法识别换行导致乱码执行
+*.bat text eol=crlf
+*.cmd text eol=crlf
