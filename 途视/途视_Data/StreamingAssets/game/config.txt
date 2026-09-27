@@ -1,0 +1,6 @@
+﻿SERVER_LIST_HOST = http://test.server.com
+SERVER_FOLDER = test
+PHOTOURL = http://test.photo.com
+VERSION_CODE = 3.4.7
+DEF_LOG = false
+PlatformPath = /GameData
